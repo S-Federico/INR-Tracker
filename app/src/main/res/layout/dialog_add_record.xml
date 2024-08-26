@@ -1,0 +1,28 @@
+<!-- File: res/layout/dialog_add_record.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Data"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editTextINR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Valore INR"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editTextDosage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Dosaggio Cumadin"
+        android:inputType="numberDecimal" />
+</LinearLayout>

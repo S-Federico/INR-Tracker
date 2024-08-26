@@ -1,0 +1,6 @@
+<!-- File: res/values/strings.xml -->
+<resources>
+    <string name="app_name">INR Tracker</string>
+    <string name="add_patient">Aggiungi Paziente</string>
+    <string name="add_record">Aggiungi Record</string>
+</resources>
