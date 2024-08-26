@@ -1,22 +1,51 @@
-<!-- File: res/layout/item_patient.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/textViewPatientName"
+    <!-- Sezione Testo -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewPatientName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome Paziente"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewNextDosage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prossima dose: -"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Sezione Pulsanti -->
+    <ImageButton
+        android:id="@+id/buttonEditPatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome Paziente"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/edit_patient"
+        android:src="@drawable/ic_edit"
+        android:padding="8dp" />
 
-    <TextView
-        android:id="@+id/textViewDosage"
+    <ImageButton
+        android:id="@+id/buttonDeletePatient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dosaggio Cumadin"
-        android:textSize="16sp" />
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/delete_patient"
+        android:src="@drawable/ic_delete"
+        android:padding="8dp" />
 </LinearLayout>
+

@@ -3,4 +3,8 @@
     <string name="app_name">INR Tracker</string>
     <string name="add_patient">Aggiungi Paziente</string>
     <string name="add_record">Aggiungi Record</string>
+    <string name="edit_patient">edit</string>
+    <string name="delete_patient">delete</string>
+    <string name="edit_record">Modifica Record</string>
+    <string name="delete_record">Elimina Record</string>
 </resources>

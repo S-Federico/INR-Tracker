@@ -1,5 +1,4 @@
 package com.example.inrtracker;
-// File: java/com/tuo/package/name/MainActivity.java
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,11 +31,46 @@ public class MainActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         patientList = dbHelper.getAllPatients();
 
-        adapter = new PatientAdapter(patientList, this::onPatientClicked);
+        adapter = new PatientAdapter(patientList, dbHelper, new PatientAdapter.OnItemClickListener() {
+            @Override
+            public void onEditClick(Patient patient) {
+                // Implementa la logica di modifica qui (apri un dialogo o una nuova activity)
+            }
+
+            @Override
+            public void onDeleteClick(Patient patient) {
+                // Mostra un dialogo di conferma per cancellare il paziente
+                showDeletePatientDialog(patient);
+            }
+
+            @Override
+            public void onItemClick(Patient patient) {
+                // Apri la PatientActivity per visualizzare i dettagli del paziente
+                Intent intent = new Intent(MainActivity.this, PatientActivity.class);
+                intent.putExtra("patientName", patient.getName());
+                intent.putExtra("dosage", patient.getDosage());
+                startActivity(intent);
+            }
+        });
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
         fabAddPatient.setOnClickListener(v -> showAddPatientDialog());
+    }
+
+    private void showDeletePatientDialog(Patient patient) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Elimina Paziente")
+                .setMessage("Sei sicuro di voler eliminare il paziente " + patient.getName() + "?")
+                .setPositiveButton("Sì", (dialog, which) -> {
+                    dbHelper.deletePatient(patient.getId()); // Rimuovi il paziente dal database
+                    patientList.remove(patient); // Rimuovi il paziente dalla lista
+                    adapter.notifyDataSetChanged(); // Aggiorna l'adattatore
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     private void showAddPatientDialog() {
@@ -59,12 +93,5 @@ public class MainActivity extends AppCompatActivity {
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         builder.create().show();
-    }
-
-    private void onPatientClicked(Patient patient) {
-        Intent intent = new Intent(MainActivity.this, PatientActivity.class);
-        intent.putExtra("patientName", patient.getName());
-        intent.putExtra("dosage", patient.getDosage());
-        startActivity(intent);
     }
 }

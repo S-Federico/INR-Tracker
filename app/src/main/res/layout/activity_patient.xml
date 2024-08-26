@@ -1,4 +1,3 @@
-<!-- File: res/layout/activity_patient.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,31 +6,56 @@
 
     <TextView
         android:id="@+id/textViewPatientName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
         android:text="Nome Paziente"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
     <TextView
-        android:id="@+id/textViewDosage"
-        android:layout_width="wrap_content"
+        android:id="@+id/textViewTargetINR"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Target INR: -"
+        android:textSize="16sp"
         android:layout_below="@id/textViewPatientName"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:text="Dosaggio Cumadin"
-        android:textSize="20sp" />
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewEstimatedDosage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prossima dose (stima): -"
+        android:textSize="16sp"
+        android:layout_below="@id/textViewTargetINR"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewMaintenanceDosage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dose di mantenimento: -"
+        android:textSize="16sp"
+        android:layout_below="@id/textViewEstimatedDosage"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHistory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewDosage"
+        android:layout_height="0dp"
         android:layout_above="@id/fabAddRecord"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_below="@+id/textViewMaintenanceDosage"
+        android:layout_marginTop="85dp"
+        android:layout_marginBottom="-38dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddRecord"
@@ -41,7 +65,7 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
         android:contentDescription="@string/add_record"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@android:drawable/ic_input_add"/>
 
     <Button
         android:id="@+id/buttonSetTargetINR"
@@ -49,6 +73,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Set Target INR" />
+
+    <Button
+        android:id="@+id/buttonViewTherapeuticPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSetTargetINR"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Visualizza P. T." />
+
 </RelativeLayout>
